@@ -36,7 +36,7 @@ class StreamingOutput(object):
 class MyHandler(http.server.SimpleHTTPRequestHandler):
     allow_reuse_address = True
     def do_GET(self):
-        if self.path == '/build/tex.jpg' or self.path == '/tex.jpg':
+        if self.path in ['/build/tex.jpg', '/tex.jpg']:
             with output.condition:
                 output.condition.wait()
                 frame = output.frame
